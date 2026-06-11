@@ -8,10 +8,11 @@
     "children":[],
     "name":"Default",
   },
-  "defaultScriptType":0,
+  "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"fonts","folderPath":"folders/fonts.yy","name":"fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Object","folderPath":"folders/Object.yy","name":"Object","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"rooms","folderPath":"folders/rooms.yy","name":"rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sequencias","folderPath":"folders/sequencias.yy","name":"sequencias","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -31,8 +32,16 @@
   },
   "name":"G0RDOTRON",
   "resources":[
+    {"id":{"name":"Fonte_into","path":"fonts/Fonte_into/Fonte_into.yy",},},
+    {"id":{"name":"Obj_menu","path":"objects/Obj_menu/Obj_menu.yy",},},
     {"id":{"name":"Obj_texto","path":"objects/Obj_texto/Obj_texto.yy",},},
     {"id":{"name":"intro","path":"rooms/intro/intro.yy",},},
+    {"id":{"name":"menu","path":"rooms/menu/menu.yy",},},
+    {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},},
+    {"id":{"name":"Sequence1","path":"sequences/Sequence1/Sequence1.yy",},},
+    {"id":{"name":"So_slide","path":"sounds/So_slide/So_slide.yy",},},
+    {"id":{"name":"Spr_butum","path":"sprites/Spr_butum/Spr_butum.yy",},},
+    {"id":{"name":"Spr_fundo_teste","path":"sprites/Spr_fundo_teste/Spr_fundo_teste.yy",},},
     {"id":{"name":"Spr_icone","path":"sprites/Spr_icone/Spr_icone.yy",},},
     {"id":{"name":"Spr_sistema_black","path":"sprites/Spr_sistema_black/Spr_sistema_black.yy",},},
   ],
@@ -40,6 +49,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"intro","path":"rooms/intro/intro.yy",},},
+    {"roomId":{"name":"menu","path":"rooms/menu/menu.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
