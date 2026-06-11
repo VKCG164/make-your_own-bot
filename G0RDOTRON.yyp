@@ -16,6 +16,7 @@
     {"$GMFolder":"","%Name":"rooms","folderPath":"folders/rooms.yy","name":"rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sequencias","folderPath":"folders/sequencias.yy","name":"sequencias","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprites","folderPath":"folders/sprites.yy","name":"sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"sistema","folderPath":"folders/sprites/sistema.yy","name":"sistema","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"tile set","folderPath":"folders/tile set.yy","name":"tile set","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"vozes","folderPath":"folders/vozes.yy","name":"vozes","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
@@ -31,12 +32,14 @@
   "name":"G0RDOTRON",
   "resources":[
     {"id":{"name":"Obj_texto","path":"objects/Obj_texto/Obj_texto.yy",},},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"intro","path":"rooms/intro/intro.yy",},},
+    {"id":{"name":"Spr_icone","path":"sprites/Spr_icone/Spr_icone.yy",},},
+    {"id":{"name":"Spr_sistema_black","path":"sprites/Spr_sistema_black/Spr_sistema_black.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"intro","path":"rooms/intro/intro.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
