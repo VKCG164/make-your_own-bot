@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"So_musiquinha",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":137.14285,
+  "exportDir":"",
+  "name":"So_musiquinha",
+  "parent":{
+    "name":"vozes",
+    "path":"folders/vozes.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"So_musiquinha.wav",
+  "volume":1.0,
+}
