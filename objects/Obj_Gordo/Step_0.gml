@@ -123,6 +123,7 @@ if (explosao)
 }
 
 // Editor
+
 if (mouse_check_button(mb_left))
 {
     x = mouse_x;
@@ -152,4 +153,62 @@ if (keyboard_check_pressed(vk_f1))
     ini_write_real("Gordo", "escala_y", image_yscale);
 
     ini_close();
+}
+// Editar contador
+if (keyboard_check_pressed(ord("T")))
+{
+    digitando_tempo = !digitando_tempo;
+
+    if (digitando_tempo)
+    {
+        texto_tempo = "";
+    }
+}
+
+if (digitando_tempo)
+{
+ for (var i = ord("0"); i <= ord("9"); i++)
+{
+    if (keyboard_check_pressed(i))
+    {
+        texto_tempo += chr(i);
+    }
+}
+
+for (var i = vk_numpad0; i <= vk_numpad9; i++)
+{
+    if (keyboard_check_pressed(i))
+    {
+        texto_tempo += string(i - vk_numpad0);
+    }
+}
+
+    if (keyboard_check_pressed(vk_backspace))
+    {
+        if (string_length(texto_tempo) > 0)
+        {
+            texto_tempo = string_delete(
+                texto_tempo,
+                string_length(texto_tempo),
+                1
+            );
+        }
+    }
+
+    if (keyboard_check_pressed(vk_enter))
+    {
+        var novo_tempo = real(texto_tempo);
+
+        if (room == Streaming)
+        {
+            contador_streaming = novo_tempo * 60 * room_speed;
+        }
+        else
+        {
+            contador = novo_tempo * 60 * room_speed;
+			streaming=contador
+        }
+
+        digitando_tempo = false;
+    }
 }

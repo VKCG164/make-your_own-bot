@@ -41,8 +41,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"sprites",
-    "path":"folders/sprites.yy",
+    "name":"sistema",
+    "path":"folders/sprites/sistema.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

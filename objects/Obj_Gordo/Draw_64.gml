@@ -23,9 +23,26 @@ else
 
 draw_set_font(Fonte_jogo2);
 
-var xx = display_get_gui_width() - string_width(texto) - 10;
-var yy = display_get_gui_height() - string_height(texto) - 10;
+// Tempo no topo central
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
 
-draw_text(xx, yy, texto);
+draw_text(
+    display_get_gui_width() * 0.5,
+    10,
+    texto
+);
 
+// Campo de edicao
+if (digitando_tempo)
+{
+    draw_text(
+        display_get_gui_width() * 0.5,
+        50,
+        "Minutos: " + texto_tempo + "_"
+    );
+}
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 draw_set_font(-1);

@@ -1,4 +1,7 @@
 randomise()
+digitando_tempo = false;
+texto_tempo = "";
+streaming=300
 spr_idle = Spr_GDidle;
 spr_falando = Spr_GDf_falando;
 if (file_exists("gordo.ini"))
@@ -19,23 +22,22 @@ else
     image_yscale = 4;
 }
 
-sons=[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10]
+sons=[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20]
 
 contador_streaming = 0;
 
-// escolhe entre 0 e 10 minutos
-segundo_sorteado = irandom_range(60, 300);
+
+segundo_sorteado = irandom_range(60,streaming); 
 
 tocou_streaming = false;
 tempo_troca = 10 * 60;
 
-// Converte para frames
+
 contador = room_speed * tempo_troca;
 
-// Guarda o ultimo audio tocado
+
 ultimo_som = -1;
 
-// Toca um audio inicial
 ultimo_som = irandom(array_length(sons) - 1);
 audio_play_sound(sons[ultimo_som], 0, false);
 wave = 0;
@@ -45,3 +47,5 @@ proximo_som = 0;
 explosao = false;
 explosao_frame = 0;
 depth = -100;
+arrastando = false;
+
