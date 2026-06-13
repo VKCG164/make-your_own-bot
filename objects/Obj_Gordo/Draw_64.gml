@@ -1,9 +1,25 @@
-var segundos = ceil(contador / room_speed);
+var texto;
 
-var mini = segundos div 60;
-var seg = segundos mod 60;
+if (room == Streaming)
+{
+    var segundos = floor(contador_streaming / room_speed);
 
-var texto = string_format(mini, 2, 0) + ":" + string_format(seg, 2, 0);
+    var mini = segundos div 60;
+    var seg = segundos mod 60;
+
+    texto = string_format(mini, 2, 0) + ":" +
+            string_format(seg, 2, 0);
+}
+else
+{
+    var segundos = ceil(contador / room_speed);
+
+    var mini = segundos div 60;
+    var seg = segundos mod 60;
+
+    texto = string_format(mini, 2, 0) + ":" +
+            string_format(seg, 2, 0);
+}
 
 draw_set_font(Fonte_jogo2);
 

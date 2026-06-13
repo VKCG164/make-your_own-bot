@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":4.040272,
+  "duration":1.0978458,
   "exportDir":"",
   "name":"a7",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"a7.mp3",
+  "soundFile":"a7.ogg",
   "volume":1.0,
 }

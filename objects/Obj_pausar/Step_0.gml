@@ -42,6 +42,7 @@ if (pausado)
 			Obj_Gordo.contador=0;
             break;
             case 4: 
+				Obj_Gordo.contador_streaming=0
 				global.contador= !global.contador
             break;// Sair
 			case 5:

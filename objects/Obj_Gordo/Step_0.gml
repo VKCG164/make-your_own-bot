@@ -1,12 +1,42 @@
+// Atualizacao
 wave += 0.1;
 
-// So funciona quando o menu liberar
 if (global.contador)
 {
     contador--;
 }
 
-// Verifica se esta falando
+// Streaming
+if (room == Streaming && global.contador)
+{
+    contador_streaming++;
+	
+if (!tocou_streaming &&
+    contador_streaming >= segundo_sorteado * room_speed)
+    {
+        var novo_som = ultimo_som;
+
+        while (novo_som == ultimo_som)
+        {
+            novo_som = irandom(array_length(sons) - 1);
+        }
+
+        ultimo_som = novo_som;
+        tocou_streaming = true;
+		contador_streaming = 0;
+
+        audio_play_sound(sons[ultimo_som], 0, false);
+    }
+
+    if (contador_streaming >= 10 * 60 * room_speed)
+    {
+        contador_streaming = 0;
+       segundo_sorteado = irandom_range(60, 600);
+        tocou_streaming = false;
+    }
+}
+
+// Falando
 falando = false;
 
 for (var i = 0; i < array_length(sons); i++)
@@ -18,28 +48,22 @@ for (var i = 0; i < array_length(sons); i++)
     }
 }
 
-// ROOM VIDEO
-if (room == video)
+// Audio
+if (global.contador && contador <= 0)
 {
-    // Fade out quando nao esta falando
-    if (!falando && !audio_is_playing(So_vineBoom))
+    contador = room_speed * tempo_troca;
+
+    var novo_som = ultimo_som;
+
+    while (novo_som == ultimo_som)
     {
-        image_alpha = max(0, image_alpha - 0.02);
+        novo_som = irandom(array_length(sons) - 1);
     }
 
-    if (global.contador && contador <= 0)
+    ultimo_som = novo_som;
+
+    if (room == video)
     {
-        contador = room_speed * tempo_troca;
-
-        var novo_som = ultimo_som;
-
-        while (novo_som == ultimo_som)
-        {
-            novo_som = irandom(array_length(sons) - 1);
-        }
-
-        ultimo_som = novo_som;
-
         image_alpha = 1;
 
         explosao = true;
@@ -47,30 +71,25 @@ if (room == video)
 
         audio_play_sound(So_vineBoom, 0, false);
 
-        alarm[0] = room_speed;
         proximo_som = novo_som;
+        alarm[0] = room_speed;
     }
-}
-else
-{
-    if (global.contador && contador <= 0)
+    else
     {
-        contador = room_speed * tempo_troca;
-
-        var novo_som = ultimo_som;
-
-        while (novo_som == ultimo_som)
-        {
-            novo_som = irandom(array_length(sons) - 1);
-        }
-
-        ultimo_som = novo_som;
-
         audio_play_sound(sons[ultimo_som], 0, false);
     }
 }
 
-// Animacao da explosao
+// Video
+if (room == video)
+{
+    if (!falando && !audio_is_playing(So_vineBoom))
+    {
+        image_alpha = max(0, image_alpha - 0.02);
+    }
+}
+
+// Explosao
 if (explosao)
 {
     explosao_frame += 0.4;
@@ -79,4 +98,36 @@ if (explosao)
     {
         explosao = false;
     }
+}
+
+// Editor
+if (mouse_check_button(mb_left))
+{
+    x = mouse_x;
+    y = mouse_y;
+}
+
+if (mouse_wheel_up())
+{
+    image_xscale += 0.1;
+    image_yscale += 0.1;
+}
+
+if (mouse_wheel_down())
+{
+    image_xscale = max(0.5, image_xscale - 0.1);
+    image_yscale = max(0.5, image_yscale - 0.1);
+}
+
+// Salvar
+if (keyboard_check_pressed(vk_f1))
+{
+    ini_open("gordo.ini");
+
+    ini_write_real("Gordo", "x", x);
+    ini_write_real("Gordo", "y", y);
+    ini_write_real("Gordo", "escala_x", image_xscale);
+    ini_write_real("Gordo", "escala_y", image_yscale);
+
+    ini_close();
 }

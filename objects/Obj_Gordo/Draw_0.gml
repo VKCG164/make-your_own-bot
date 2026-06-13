@@ -8,7 +8,7 @@ if (falando)
         image_index,
         x,
         y_wave,
-        4, 4, 0,
+         image_xscale, image_yscale, 0,
         c_white,
         image_alpha
     );
@@ -20,7 +20,7 @@ else
         0,
         x,
         y_wave,
-        4, 4, 0,
+         image_xscale, image_yscale, 0,
         c_white,
         image_alpha
     );
@@ -34,7 +34,7 @@ if (explosao)
         floor(explosao_frame),
         x,
         y_wave - 20,
-        4, 4,
+        image_xscale, image_yscale,
         0,
         c_white,
         1

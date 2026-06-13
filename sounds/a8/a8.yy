@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":11.102041,
+  "duration":5.5578456,
   "exportDir":"",
   "name":"a8",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"a8.mp3",
+  "soundFile":"a8.ogg",
   "volume":1.0,
 }
