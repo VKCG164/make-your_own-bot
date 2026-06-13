@@ -1,5 +1,27 @@
 // Atualizacao
 wave += 0.1;
+switch (global.skin)
+{
+    case 0:
+        spr_idle =Spr_GDidle;
+        spr_falando = Spr_GDf_falando;
+    break;
+
+    case 1:
+        spr_idle = Spr_GDdroid;
+        spr_falando = Spr_GDdroid_falando;
+    break;
+
+    case 2:
+        spr_idle = Spr_GDjao;
+        spr_falando = Spr_GDjao_falando;
+    break;
+
+    case 3:
+        spr_idle = Spr_GDjemin;
+        spr_falando = Spr_GDjeimin_falando;
+    break;
+}
 
 if (global.contador)
 {

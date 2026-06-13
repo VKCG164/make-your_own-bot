@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Gordotron",
-    "path":"folders/sprites/Gordotron.yy",
+    "name":"Gordo",
+    "path":"folders/sprites/Gordotron/Gordo.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

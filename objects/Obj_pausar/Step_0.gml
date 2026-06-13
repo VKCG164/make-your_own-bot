@@ -46,8 +46,11 @@ if (pausado)
 				global.contador= !global.contador
             break;// Sair
 			case 5:
-			room_goto(menu)
+				global.skin++
 			break;
+			case 6:
+			room_goto(menu)
+			break
         }
     }
 }

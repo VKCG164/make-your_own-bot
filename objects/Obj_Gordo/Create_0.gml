@@ -1,4 +1,6 @@
 randomise()
+spr_idle = Spr_GDidle;
+spr_falando = Spr_GDf_falando;
 if (file_exists("gordo.ini"))
 {
     ini_open("gordo.ini");

@@ -4,7 +4,7 @@ var y_wave = y + sin(wave) * 4;
 if (falando)
 {
     draw_sprite_ext(
-        Spr_GDfalando,
+        spr_falando,
         image_index,
         x,
         y_wave,
@@ -16,7 +16,7 @@ if (falando)
 else
 {
     draw_sprite_ext(
-        Spr_GDidle,
+        spr_idle,
         0,
         x,
         y_wave,

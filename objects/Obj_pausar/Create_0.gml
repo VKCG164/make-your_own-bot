@@ -6,6 +6,7 @@ opcoes = [
     "Musica",
     "Disparar",
 	"Contador",
+	"Skin",
     "Sair"
 ];
 
