@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"a7",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":4.040272,
+  "exportDir":"",
+  "name":"a7",
+  "parent":{
+    "name":"gordotron",
+    "path":"folders/vozes/gordotron.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"a7.mp3",
+  "volume":1.0,
+}

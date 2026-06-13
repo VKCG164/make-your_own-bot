@@ -1,0 +1,1 @@
+audio_play_sound(sons[proximo_som], 0, false);

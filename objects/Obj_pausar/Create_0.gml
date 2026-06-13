@@ -5,6 +5,7 @@ opcoes = [
     "Cor de Fundo",
     "Musica",
     "Disparar",
+	"Contador",
     "Sair"
 ];
 

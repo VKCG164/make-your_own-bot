@@ -39,12 +39,14 @@ if (pausado)
             break;
 
             case 3: 
-           
+			Obj_Gordo.contador=0;
             break;
-
-            case 4: // Sair
-                room_goto(menu)
-            break;
+            case 4: 
+				global.contador= !global.contador
+            break;// Sair
+			case 5:
+			room_goto(menu)
+			break;
         }
     }
 }
