@@ -50,12 +50,12 @@ if (!tocou_streaming &&
         audio_play_sound(sons[ultimo_som], 0, false);
     }
 
-    if (contador_streaming >= 10 * 60 * room_speed)
-    {
-        contador_streaming = 0;
-       segundo_sorteado = irandom_range(60, 600);
-        tocou_streaming = false;
-    }
+  if (contador_streaming >= streaming * room_speed)
+{
+    contador_streaming = 0;
+    segundo_sorteado = irandom_range(60, streaming);
+    tocou_streaming = false;
+}
 }
 
 // Falando
@@ -196,19 +196,22 @@ for (var i = vk_numpad0; i <= vk_numpad9; i++)
     }
 
     if (keyboard_check_pressed(vk_enter))
+{
+    var novo_tempo = real(texto_tempo);
+
+    if (room == Streaming)
     {
-        var novo_tempo = real(texto_tempo);
+        // Salva o limite maximo em segundos
+        streaming = novo_tempo * 60;
 
-        if (room == Streaming)
-        {
-            contador_streaming = novo_tempo * 60 * room_speed;
-        }
-        else
-        {
-            contador = novo_tempo * 60 * room_speed;
-			streaming=contador
-        }
-
-        digitando_tempo = false;
+        // Sorteia novamente usando o novo limite
+        segundo_sorteado = irandom_range(60, streaming);
     }
+    else
+    {
+        contador = novo_tempo * 60 * room_speed;
+    }
+
+    digitando_tempo = false;
+}
 }

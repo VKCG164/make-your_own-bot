@@ -30,9 +30,7 @@
     {"$GMFolder":"","%Name":"gordotron","folderPath":"folders/vozes/gordotron.yy","name":"gordotron","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"screen_1779730664801.mp4","CopyToMask":-1,"filePath":"datafiles/1779730664801","name":"screen_1779730664801.mp4","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-  ],
+  "IncludedFiles":[],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
