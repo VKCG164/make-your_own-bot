@@ -195,21 +195,21 @@ for (var i = vk_numpad0; i <= vk_numpad9; i++)
         }
     }
 
-    if (keyboard_check_pressed(vk_enter))
+  if (keyboard_check_pressed(vk_enter))
 {
-    var novo_tempo = real(texto_tempo);
-
-    if (room == Streaming)
+    if (string_length(texto_tempo) > 0)
     {
-        // Salva o limite maximo em segundos
-        streaming = novo_tempo * 60;
+        var novo_tempo = max(1, real(texto_tempo));
 
-        // Sorteia novamente usando o novo limite
-        segundo_sorteado = irandom_range(60, streaming);
-    }
-    else
-    {
-        contador = novo_tempo * 60 * room_speed;
+        if (room == Streaming)
+        {
+            streaming = novo_tempo * 60;
+            segundo_sorteado = irandom_range(60, streaming);
+        }
+        else
+        {
+            contador = novo_tempo * 60 * room_speed;
+        }
     }
 
     digitando_tempo = false;
