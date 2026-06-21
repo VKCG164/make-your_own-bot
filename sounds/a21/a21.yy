@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"a21",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":2.8792744,
+  "exportDir":"",
+  "name":"a21",
+  "parent":{
+    "name":"gordotron",
+    "path":"folders/vozes/gordotron.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"a21.wav",
+  "volume":1.0,
+}
