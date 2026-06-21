@@ -21,6 +21,22 @@ switch (global.skin)
         spr_idle = Spr_GDjemin;
         spr_falando = Spr_GDjeimin_falando;
     break;
+	case 4:
+	  spr_idle = Spr_Gdmine;
+      spr_falando = Spr_GDmine_falando;
+	  break;
+	 case 5:
+	  spr_idle = Spr_Gdjaomine;
+      spr_falando = Spr_Gdjaomine_falando;
+	  break;
+	  case 6:
+	  spr_idle = Spr_GDjiminmine;
+      spr_falando = Spr_GDjiminmine_falando;
+	  break;
+	  case 7:
+	   spr_idle = Spr_GD_helenob;
+      spr_falando = Spr_GDhelenob_falando;
+	  break;
 }
 
 if (global.contador)

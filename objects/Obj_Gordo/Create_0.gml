@@ -48,4 +48,3 @@ explosao = false;
 explosao_frame = 0;
 depth = -100;
 arrastando = false;
-
