@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":137.14285,
+  "duration":91.42855,
   "exportDir":"",
   "name":"So_musiquinha",
   "parent":{

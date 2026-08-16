@@ -37,6 +37,10 @@ switch (global.skin)
 	   spr_idle = Spr_GD_helenob;
       spr_falando = Spr_GDhelenob_falando;
 	  break;
+	  case 8:
+	  spr_idle=Spr_Teto;
+	  spr_falando=Spr_Teto_Falando;
+	  break;
 }
 
 if (global.contador)
