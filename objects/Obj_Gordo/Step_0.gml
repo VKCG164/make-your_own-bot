@@ -1,6 +1,7 @@
-// Atualizacao
+
 wave += 0.1;
 
+// Skins
 switch (global.skin)
 {
     case 0:
@@ -49,6 +50,7 @@ switch (global.skin)
     break;
 }
 
+// Contador
 if (global.contador)
 {
     contador--;
@@ -84,7 +86,7 @@ if (room == Streaming && global.contador)
     }
 }
 
-// Falando
+// Verificar se esta falando
 falando = false;
 
 for (var i = 0; i < array_length(sons); i++)
@@ -96,7 +98,18 @@ for (var i = 0; i < array_length(sons); i++)
     }
 }
 
-// Audio
+// Boing ao comecar ou parar de falar
+if (falando != falando_anterior)
+{
+    boing_fala = 1;
+    falando_anterior = falando;
+}
+else
+{
+    boing_fala = max(0, boing_fala - 0.08);
+}
+
+// Audio do contador
 if (global.contador && contador <= 0)
 {
     contador = room_speed * tempo_troca;
@@ -113,7 +126,6 @@ if (global.contador && contador <= 0)
     if (room == video)
     {
         image_alpha = 1;
-
         explosao = true;
         explosao_frame = 0;
 
@@ -148,25 +160,19 @@ if (explosao)
     }
 }
 
-// Editor: arrastar o Gordo
-
+// Arrastar o Gordo
 if (mouse_check_button_pressed(mb_left))
 {
     var mx = mouse_x;
     var my = mouse_y;
 
-    var largura = 0;
-    var altura = 0;
+    var largura = 100 * abs(image_xscale);
+    var altura = 100 * abs(image_yscale);
 
     if (sprite_index != -1)
     {
         largura = sprite_get_width(sprite_index) * abs(image_xscale);
         altura = sprite_get_height(sprite_index) * abs(image_yscale);
-    }
-    else
-    {
-        largura = 100 * abs(image_xscale);
-        altura = 100 * abs(image_yscale);
     }
 
     if (mx >= x - largura / 2 &&
@@ -190,6 +196,21 @@ if (mouse_check_button_released(mb_left))
 {
     arrastando = false;
 }
+
+// Boing ao segurar
+if (arrastando)
+{
+    escala_boing += 0.3;
+
+    boing_y = 1 + sin(escala_boing) * 0.08;
+    boing_x = 1 - sin(escala_boing) * 0.05;
+}
+else
+{
+    boing_x = lerp(boing_x, 1, 0.2);
+    boing_y = lerp(boing_y, 1, 0.2);
+}
+
 // Aumentar tamanho
 if (mouse_wheel_up())
 {
@@ -204,7 +225,7 @@ if (mouse_wheel_down())
     image_yscale = max(0.5, image_yscale - 0.1);
 }
 
-// Salvar
+// Salvar posicao e escala
 if (keyboard_check_pressed(vk_f1))
 {
     ini_open("gordo.ini");
@@ -217,7 +238,7 @@ if (keyboard_check_pressed(vk_f1))
     ini_close();
 }
 
-// Editar contador
+// Ativar edicao do contador
 if (keyboard_check_pressed(ord("T")))
 {
     digitando_tempo = !digitando_tempo;
@@ -228,6 +249,7 @@ if (keyboard_check_pressed(ord("T")))
     }
 }
 
+// Digitar tempo
 if (digitando_tempo)
 {
     for (var i = ord("0"); i <= ord("9"); i++)
