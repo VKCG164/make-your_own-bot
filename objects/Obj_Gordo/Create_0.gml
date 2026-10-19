@@ -132,7 +132,7 @@ if (file_exists("gordo.ini")) {
 }
 
 // SONS
-sons = [a1, a9];
+sons = [Sd_test1, Sd_test2];
 
 audio_pasta = environment_get_variable("LOCALAPPDATA") + "/BotTron_GD/audio";
 

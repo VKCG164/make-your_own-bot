@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"a9",
+  "%Name":"Sd_test1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.237846,
+  "duration":3.9706123,
   "exportDir":"",
-  "name":"a9",
+  "name":"Sd_test1",
   "parent":{
     "name":"gordotron",
     "path":"folders/vozes/gordotron.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"a9.ogg",
+  "soundFile":"Sd_test1.mp3",
   "volume":1.0,
 }
