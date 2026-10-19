@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"audioExtOggRemove",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"audioExtOggRemove",
+  "parent":{
+    "name":"Ogg",
+    "path":"folders/audioExt/Ogg.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"audioExtSoundRemove",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"audioExtSoundRemove",
+  "parent":{
+    "name":"General",
+    "path":"folders/audioExt/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

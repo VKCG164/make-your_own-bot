@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__audioExtTrace",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__audioExtTrace",
+  "parent":{
+    "name":"System",
+    "path":"folders/audioExt/System.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
