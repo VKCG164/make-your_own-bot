@@ -1,9 +1,10 @@
 // Atualizacao
 wave += 0.1;
+
 switch (global.skin)
 {
     case 0:
-        spr_idle =Spr_GDidle;
+        spr_idle = Spr_GDidle;
         spr_falando = Spr_GDf_falando;
     break;
 
@@ -21,26 +22,31 @@ switch (global.skin)
         spr_idle = Spr_GDjemin;
         spr_falando = Spr_GDjeimin_falando;
     break;
-	case 4:
-	  spr_idle = Spr_Gdmine;
-      spr_falando = Spr_GDmine_falando;
-	  break;
-	 case 5:
-	  spr_idle = Spr_Gdjaomine;
-      spr_falando = Spr_Gdjaomine_falando;
-	  break;
-	  case 6:
-	  spr_idle = Spr_GDjiminmine;
-      spr_falando = Spr_GDjiminmine_falando;
-	  break;
-	  case 7:
-	   spr_idle = Spr_GD_helenob;
-      spr_falando = Spr_GDhelenob_falando;
-	  break;
-	  case 8:
-	  spr_idle=Spr_Teto;
-	  spr_falando=Spr_Teto_Falando;
-	  break;
+
+    case 4:
+        spr_idle = Spr_Gdmine;
+        spr_falando = Spr_GDmine_falando;
+    break;
+
+    case 5:
+        spr_idle = Spr_Gdjaomine;
+        spr_falando = Spr_Gdjaomine_falando;
+    break;
+
+    case 6:
+        spr_idle = Spr_GDjiminmine;
+        spr_falando = Spr_GDjiminmine_falando;
+    break;
+
+    case 7:
+        spr_idle = Spr_GD_helenob;
+        spr_falando = Spr_GDhelenob_falando;
+    break;
+
+    case 8:
+        spr_idle = Spr_Teto;
+        spr_falando = Spr_Teto_Falando;
+    break;
 }
 
 if (global.contador)
@@ -52,9 +58,9 @@ if (global.contador)
 if (room == Streaming && global.contador)
 {
     contador_streaming++;
-	
-if (!tocou_streaming &&
-    contador_streaming >= segundo_sorteado * room_speed)
+
+    if (!tocou_streaming &&
+        contador_streaming >= segundo_sorteado * room_speed)
     {
         var novo_som = ultimo_som;
 
@@ -65,17 +71,17 @@ if (!tocou_streaming &&
 
         ultimo_som = novo_som;
         tocou_streaming = true;
-		contador_streaming = 0;
+        contador_streaming = 0;
 
         audio_play_sound(sons[ultimo_som], 0, false);
     }
 
-  if (contador_streaming >= streaming * room_speed)
-{
-    contador_streaming = 0;
-    segundo_sorteado = irandom_range(60, streaming);
-    tocou_streaming = false;
-}
+    if (contador_streaming >= streaming * room_speed)
+    {
+        contador_streaming = 0;
+        segundo_sorteado = irandom_range(60, streaming);
+        tocou_streaming = false;
+    }
 }
 
 // Falando
@@ -142,20 +148,56 @@ if (explosao)
     }
 }
 
-// Editor
+// Editor: arrastar o Gordo
 
-if (mouse_check_button(mb_left))
+if (mouse_check_button_pressed(mb_left))
 {
-    x = mouse_x;
-    y = mouse_y;
+    var mx = mouse_x;
+    var my = mouse_y;
+
+    var largura = 0;
+    var altura = 0;
+
+    if (sprite_index != -1)
+    {
+        largura = sprite_get_width(sprite_index) * abs(image_xscale);
+        altura = sprite_get_height(sprite_index) * abs(image_yscale);
+    }
+    else
+    {
+        largura = 100 * abs(image_xscale);
+        altura = 100 * abs(image_yscale);
+    }
+
+    if (mx >= x - largura / 2 &&
+        mx <= x + largura / 2 &&
+        my >= y - altura / 2 &&
+        my <= y + altura / 2)
+    {
+        arrastando = true;
+        arrasto_offset_x = x - mx;
+        arrasto_offset_y = y - my;
+    }
 }
 
+if (arrastando && mouse_check_button(mb_left))
+{
+    x = mouse_x + arrasto_offset_x;
+    y = mouse_y + arrasto_offset_y;
+}
+
+if (mouse_check_button_released(mb_left))
+{
+    arrastando = false;
+}
+// Aumentar tamanho
 if (mouse_wheel_up())
 {
     image_xscale += 0.1;
     image_yscale += 0.1;
 }
 
+// Diminuir tamanho
 if (mouse_wheel_down())
 {
     image_xscale = max(0.5, image_xscale - 0.1);
@@ -174,6 +216,7 @@ if (keyboard_check_pressed(vk_f1))
 
     ini_close();
 }
+
 // Editar contador
 if (keyboard_check_pressed(ord("T")))
 {
@@ -187,21 +230,21 @@ if (keyboard_check_pressed(ord("T")))
 
 if (digitando_tempo)
 {
- for (var i = ord("0"); i <= ord("9"); i++)
-{
-    if (keyboard_check_pressed(i))
+    for (var i = ord("0"); i <= ord("9"); i++)
     {
-        texto_tempo += chr(i);
+        if (keyboard_check_pressed(i))
+        {
+            texto_tempo += chr(i);
+        }
     }
-}
 
-for (var i = vk_numpad0; i <= vk_numpad9; i++)
-{
-    if (keyboard_check_pressed(i))
+    for (var i = vk_numpad0; i <= vk_numpad9; i++)
     {
-        texto_tempo += string(i - vk_numpad0);
+        if (keyboard_check_pressed(i))
+        {
+            texto_tempo += string(i - vk_numpad0);
+        }
     }
-}
 
     if (keyboard_check_pressed(vk_backspace))
     {
@@ -215,23 +258,23 @@ for (var i = vk_numpad0; i <= vk_numpad9; i++)
         }
     }
 
-  if (keyboard_check_pressed(vk_enter))
-{
-    if (string_length(texto_tempo) > 0)
+    if (keyboard_check_pressed(vk_enter))
     {
-        var novo_tempo = max(1, real(texto_tempo));
+        if (string_length(texto_tempo) > 0)
+        {
+            var novo_tempo = max(1, real(texto_tempo));
 
-        if (room == Streaming)
-        {
-            streaming = novo_tempo * 60;
-            segundo_sorteado = irandom_range(60, streaming);
+            if (room == Streaming)
+            {
+                streaming = novo_tempo * 60;
+                segundo_sorteado = irandom_range(60, streaming);
+            }
+            else
+            {
+                contador = novo_tempo * 60 * room_speed;
+            }
         }
-        else
-        {
-            contador = novo_tempo * 60 * room_speed;
-        }
+
+        digitando_tempo = false;
     }
-
-    digitando_tempo = false;
-}
 }

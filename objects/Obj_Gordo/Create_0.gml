@@ -48,3 +48,5 @@ explosao = false;
 explosao_frame = 0;
 depth = -100;
 arrastando = false;
+arrasto_offset_x = 0;
+arrasto_offset_y = 0;

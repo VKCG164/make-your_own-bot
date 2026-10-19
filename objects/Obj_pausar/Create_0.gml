@@ -11,3 +11,4 @@ opcoes = [
 ];
 
 selecionado = 0;
+ultimo_clique_scroll = -1000;

@@ -1,20 +1,22 @@
 menu_atual = 0;
 
-meno = ["Gravar","Streaming","Tela","Sair"];
-meno2 = ["Cor de fundo","Musica","Voltar"];
+meno = ["Gravar", "Streaming", "Tela", "Sair"];
+meno2 = ["Cor de fundo", "Musica", "Voltar"];
 
 indice = 0;
-pos=indice;
-larg_fim= 292;
-alt_fim= 92;
+pos = indice;
 
-larg= larg_fim;
-alt= alt_fim;
+larg_fim = 292;
+alt_fim = 92;
 
-larg_ini= larg_fim/2
-alt_ini= alt_fim/2
+larg = larg_fim;
+alt = alt_fim;
+
+larg_ini = larg_fim / 2;
+alt_ini = alt_fim / 2;
+
 draw_set_font(Fonte_into);
+
 texto_escala_fim = 1.2;
 texto_escala_ini = 0.7;
-
 texto_escala = texto_escala_fim;
