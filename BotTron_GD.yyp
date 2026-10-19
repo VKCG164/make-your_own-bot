@@ -1,6 +1,6 @@
 {
   "$GMProject":"v1",
-  "%Name":"G0RDOTRON",
+  "%Name":"BotTron_GD",
   "AudioGroups":[
     {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -41,7 +41,7 @@
   "MetaData":{
     "IDEVersion":"2026.0.0.16",
   },
-  "name":"G0RDOTRON",
+  "name":"BotTron_GD",
   "resources":[
     {"id":{"name":"Fonte_into","path":"fonts/Fonte_into/Fonte_into.yy",},},
     {"id":{"name":"Fonte_jogo2","path":"fonts/Fonte_jogo2/Fonte_jogo2.yy",},},
@@ -117,6 +117,7 @@
     {"id":{"name":"Spr_Teto_Falando","path":"sprites/Spr_Teto_Falando/Spr_Teto_Falando.yy",},},
     {"id":{"name":"Spr_Teto","path":"sprites/Spr_Teto/Spr_Teto.yy",},},
     {"id":{"name":"Spr_titulo","path":"sprites/Spr_titulo/Spr_titulo.yy",},},
+    {"id":{"name":"Sprite28","path":"sprites/Sprite28/Sprite28.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
