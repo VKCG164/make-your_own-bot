@@ -1,54 +1,28 @@
 
 wave += 0.1;
 
-// Skins
-switch (global.skin)
-{
-    case 0:
-        spr_idle = Spr_GDidle;
-        spr_falando = Spr_GDf_falando;
-    break;
 
-    case 1:
-        spr_idle = Spr_GDdroid;
-        spr_falando = Spr_GDdroid_falando;
-    break;
+var total_skins = array_length(global.lista_skins);
 
-    case 2:
-        spr_idle = Spr_GDjao;
-        spr_falando = Spr_GDjao_falando;
-    break;
+if (total_skins > 0) {
+    global.skin = clamp(global.skin, 0, total_skins - 1);
 
-    case 3:
-        spr_idle = Spr_GDjemin;
-        spr_falando = Spr_GDjeimin_falando;
-    break;
+    if (skin_aplicada != global.skin) {
+        var estava_falando = (sprite_index == spr_falando);
 
-    case 4:
-        spr_idle = Spr_Gdmine;
-        spr_falando = Spr_GDmine_falando;
-    break;
+        spr_idle = global.skins_idle[global.skin];
+        spr_falando = global.skins_falando[global.skin];
 
-    case 5:
-        spr_idle = Spr_Gdjaomine;
-        spr_falando = Spr_Gdjaomine_falando;
-    break;
+        if (estava_falando) {
+            sprite_index = spr_falando;
+        } else {
+            sprite_index = spr_idle;
+        }
 
-    case 6:
-        spr_idle = Spr_GDjiminmine;
-        spr_falando = Spr_GDjiminmine_falando;
-    break;
-
-    case 7:
-        spr_idle = Spr_GD_helenob;
-        spr_falando = Spr_GDhelenob_falando;
-    break;
-
-    case 8:
-        spr_idle = Spr_Teto;
-        spr_falando = Spr_Teto_Falando;
-    break;
+        skin_aplicada = global.skin;
+    }
 }
+
 
 // Contador
 if (global.contador)
