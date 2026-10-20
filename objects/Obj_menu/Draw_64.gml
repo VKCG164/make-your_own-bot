@@ -64,16 +64,40 @@ for (var i = 0; i < qtd; i++)
         _h
     );
 
+    var escala_x = _escala;
+    var escala_y = _escala;
+    var deslocamento_y = 0;
+
+    // Pulsação do texto selecionado
+    if (i == indice)
+    {
+        var pulso = sin(texto_pulso) * 0.06;
+
+        escala_x += pulso;
+        escala_y += pulso;
+    }
+
+    // Impacto ao clicar
+    if (i == texto_clique_indice && texto_clique > 0)
+    {
+        var impacto = sin(texto_clique * pi * 4);
+
+        escala_x += impacto * 0.12 * texto_clique;
+        escala_y -= impacto * 0.12 * texto_clique;
+
+        deslocamento_y = impacto * 4 * texto_clique;
+    }
+
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_set_color(_cor);
 
     draw_text_transformed(
         _x,
-        _y,
+        _y + deslocamento_y,
         menu_ref[i],
-        _escala,
-        _escala,
+        escala_x,
+        escala_y,
         0
     );
 }

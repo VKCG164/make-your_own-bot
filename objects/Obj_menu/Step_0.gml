@@ -1,4 +1,3 @@
-
 var _up = keyboard_check_pressed(vk_up);
 var _down = keyboard_check_pressed(vk_down);
 var _input = _down - _up;
@@ -15,17 +14,16 @@ else
 }
 
 var qtd = array_length(menu_ref);
-var espacamento = 80;
+var espacamento = 100;
 
 var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
 
-// Selecionar com o mouse
 for (var i = 0; i < qtd; i++)
 {
     var diferenca = i - pos;
 
-    var _x = display_get_gui_width() - 250 + abs(diferenca) * 60;
+    var _x = display_get_gui_width() - 280 + abs(diferenca) * 60;
     var _y = display_get_gui_height() * 0.5 + diferenca * espacamento;
 
     if (i == indice)
@@ -49,7 +47,6 @@ for (var i = 0; i < qtd; i++)
     }
 }
 
-// Navegação pelo teclado
 if (_input != 0)
 {
     indice += _input;
@@ -71,7 +68,6 @@ if (_input != 0)
     audio_play_sound(So_slide, 2, false);
 }
 
-// Limites da seleção
 if (indice >= qtd)
 {
     indice = 0;
@@ -82,7 +78,6 @@ if (indice < 0)
     indice = qtd - 1;
 }
 
-// Animações
 pos = lerp(pos, indice, 0.1);
 larg = lerp(larg, larg_fim, 0.1);
 
@@ -93,12 +88,24 @@ if (larg > larg_fim - 2)
 
 texto_escala = lerp(texto_escala, texto_escala_fim, 0.1);
 
-// Confirmar com mouse ou Enter
+// Animação de seleção
+texto_pulso += 0.15;
+
+// Animação de clique
+if (texto_clique > 0)
+{
+    texto_clique = max(0, texto_clique - 0.12);
+}
+
+// Confirmar
 var confirmar = mouse_check_button_pressed(mb_left)
     || keyboard_check_pressed(vk_enter);
 
 if (confirmar)
 {
+    texto_clique = 1;
+    texto_clique_indice = indice;
+
     if (menu_atual == 0)
     {
         switch (indice)

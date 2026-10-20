@@ -1,3 +1,4 @@
+
 menu_atual = 0;
 
 meno = ["Gravar", "Streaming", "Tela", "Sair"];
@@ -20,3 +21,7 @@ draw_set_font(Fonte_into);
 texto_escala_fim = 1.2;
 texto_escala_ini = 0.7;
 texto_escala = texto_escala_fim;
+
+texto_pulso = 0;
+texto_clique = 0;
+texto_clique_indice = -1;
