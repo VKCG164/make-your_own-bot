@@ -1,5 +1,4 @@
 // url do audio: https://github.com/tabularelf/audioExt
-
 randomise();
 
 digitando_tempo = false;
