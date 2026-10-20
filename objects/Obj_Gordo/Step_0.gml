@@ -159,11 +159,11 @@ if (mouse_wheel_down()) {
 }
 
 if (keyboard_check_pressed(vk_f1)) {
-    ini_open("gordo.ini");
-    ini_write_real("Gordo", "x", x);
-    ini_write_real("Gordo", "y", y);
-    ini_write_real("Gordo", "escala_x", image_xscale);
-    ini_write_real("Gordo", "escala_y", image_yscale);
+    ini_open("botConfig.ini");
+    ini_write_real("botConfig", "x", x);
+    ini_write_real("botConfig", "y", y);
+    ini_write_real("botConfig", "escala_x", image_xscale);
+    ini_write_real("botConfig", "escala_y", image_yscale);
     ini_close();
 }
 
