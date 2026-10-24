@@ -1,3 +1,4 @@
+
 global.musica = true;
 global.fundo = 0;
 
@@ -99,7 +100,7 @@ if (!global.skins_externas_inicializadas) {
                 sprite_set_offset(novo_idle, sprite_get_width(novo_idle) div 2, sprite_get_height(novo_idle) div 2);
                 sprite_set_offset(novo_falando, sprite_get_width(novo_falando) div 2, sprite_get_height(novo_falando) div 2);
 
-                array_push(global.lista_skins, nome_pasta + " - " + string_delete(base, 1, 4));
+				array_push(global.lista_skins, nome_pasta);
                 array_push(global.skins_idle, novo_idle);
                 array_push(global.skins_falando, novo_falando);
 
@@ -113,8 +114,6 @@ if (!global.skins_externas_inicializadas) {
 
     global.skins_externas_inicializadas = true;
 }
-
-global.skin = clamp(global.skin, 0, array_length(global.lista_skins) - 1);
 
 var pasta_audio = environment_get_variable("LOCALAPPDATA") + "/BotTron_GD/audio";
 
@@ -164,6 +163,16 @@ if (!global.audios_externos_inicializados) {
     global.audios_externos_inicializados = true;
 }
 
+if (file_exists("botConfig.ini")) {
+    ini_open("botConfig.ini");
+    global.skin = ini_read_real("botConfig", "skin", 0);
+    ini_close();
+}
+
 global.skin = clamp(global.skin, 0, array_length(global.lista_skins) - 1);
 
-show_debug_message("Total de sons disponíveis: " + string(array_length(global.sons)));
+show_debug_message("Índice da skin carregada: " + string(global.skin));
+
+if (array_length(global.lista_skins) > 0) {
+    show_debug_message("Nome da skin carregada: " + string(global.lista_skins[global.skin]));
+}

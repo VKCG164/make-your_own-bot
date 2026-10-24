@@ -22,8 +22,6 @@ if (abs(animacao_menu - (pausado ? 1 : 0)) < 0.005) {
     animacao_menu = pausado ? 1 : 0;
 }
 
-opcoes[5] = global.interface_oculta ? "MOSTRAR GUI" : "ESCONDER GUI";
-
 if (!pausado) {
     exit;
 }
@@ -32,7 +30,6 @@ var qtd = array_length(opcoes);
 var gh = display_get_gui_height();
 var gw = display_get_gui_width();
 var espacamento = min(gh * 0.12, 95);
-
 
 var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
@@ -120,17 +117,6 @@ if (confirmar) {
         break;
 
         case 3:
-            if (instance_exists(Obj_Gordo)) {
-                with (Obj_Gordo) {
-                    contador = room_speed * tempo_troca;
-                    contador_streaming = 0;
-                    tocou_streaming = false;
-                    segundo_sorteado = irandom_range(1, max(1, streaming));
-                }
-            }
-        break;
-
-        case 4:
             global.contador = !global.contador;
 
             if (instance_exists(Obj_Gordo)) {
@@ -141,26 +127,24 @@ if (confirmar) {
             }
         break;
 
-        case 5:
-            global.interface_oculta = !global.interface_oculta;
-        break;
-
-        case 6:
+        case 4:
             if (instance_exists(Obj_Gordo)) {
                 with (Obj_Gordo) {
                     ini_open("botConfig.ini");
-                    ini_write_real("Gordo", "x", x);
-                    ini_write_real("Gordo", "y", y);
-                    ini_write_real("Gordo", "escala_x", image_xscale);
-                    ini_write_real("Gordo", "escala_y", image_yscale);
+                    ini_write_real("botConfig", "x", x);
+                    ini_write_real("botConfig", "y", y);
+                    ini_write_real("botConfig", "escala_x", image_xscale);
+                    ini_write_real("botConfig", "escala_y", image_yscale);
+                    ini_write_real("botConfig", "skin", global.skin);
                     ini_close();
                 }
+
+                show_debug_message("Posicao, escala e skin salvas!");
             }
         break;
 
-        case 7:
+        case 5:
             pausado = false;
-            global.interface_oculta = false;
             room_goto(menu);
         break;
     }

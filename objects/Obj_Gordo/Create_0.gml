@@ -142,25 +142,30 @@ if (!global.skins_externas_inicializadas) {
     global.skins_externas_inicializadas = true;
 }
 
+// Carrega a última skin salva
+if (file_exists("botConfig.ini")) {
+    ini_open("botConfig.ini");
+    global.skin = ini_read_real("Gordo", "skin", global.skin);
+    ini_close();
+}
+
 global.skin = clamp(global.skin, 0, array_length(global.lista_skins) - 1);
 
 spr_idle = global.skins_idle[global.skin];
 spr_falando = global.skins_falando[global.skin];
 sprite_index = spr_idle;
 skin_aplicada = global.skin;
-
 if (file_exists("botConfig.ini")) {
     ini_open("botConfig.ini");
-    x = ini_read_real("Gordo", "x", x);
-    y = ini_read_real("Gordo", "y", y);
-    image_xscale = ini_read_real("Gordo", "escala_x", 4);
-    image_yscale = ini_read_real("Gordo", "escala_y", 4);
+    x = ini_read_real("botConfig", "x", x);
+    y = ini_read_real("botConfig", "y", y);
+    image_xscale = ini_read_real("botConfig", "escala_x", 4);
+    image_yscale = ini_read_real("botConfig", "escala_y", 4);
     ini_close();
 } else {
     image_xscale = 4;
     image_yscale = 4;
 }
-
 sons = global.sons;
 
 wave = 0;

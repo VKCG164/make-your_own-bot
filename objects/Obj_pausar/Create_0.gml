@@ -5,9 +5,7 @@ opcoes = [
     "CONTINUE",
     "COR DE FUNDO",
     "MUSICA",
-    "DISPARAR",
     "CONTADOR",
-    "ESCONDER GUI",
     "SALVAR POSICAO",
     "EXIT"
 ];
@@ -36,10 +34,6 @@ texto_clique_indice = -1;
 
 animacao_menu = 0;
 velocidade_menu = 0.15;
-
-if (!variable_global_exists("interface_oculta")) {
-    global.interface_oculta = false;
-}
 
 if (!variable_global_exists("contador")) {
     global.contador = true;
