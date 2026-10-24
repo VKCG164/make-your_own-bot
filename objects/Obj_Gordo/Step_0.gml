@@ -8,6 +8,9 @@ if (!is_array(sons)) sons = global.sons;
 
 sons = global.sons;
 
+if (!variable_instance_exists(id, "tempo_aparicao")) tempo_aparicao = 0;
+if (!variable_instance_exists(id, "gordo_visivel")) gordo_visivel = true;
+
 if (som_tocando != -1) {
     som_tempo_restante--;
 
@@ -43,13 +46,13 @@ if (som_tocando == -1 && array_length(fila_sons) > 0) {
     }
 }
 
-
 if (keyboard_check_pressed(ord("Q"))) {
     var som_sorteado = sortear_som();
 
     if (som_sorteado != -1) {
         if (room == video) {
             image_alpha = 1;
+            gordo_visivel = true;
             explosao = true;
             explosao_frame = 0;
 
@@ -67,14 +70,34 @@ falando = som_tocando != -1 && som_recurso_tocando != So_vineBoom;
 
 if (falando) {
     image_alpha = 1;
+    gordo_visivel = true;
+    tempo_aparicao = ceil(room_speed * 0.5);
 
     if (sprite_index != spr_falando) {
         sprite_index = spr_falando;
         image_index = 0;
     }
-} else if (sprite_index != spr_idle) {
-    sprite_index = spr_idle;
-    image_index = 0;
+} else {
+    if (sprite_index != spr_idle) {
+        sprite_index = spr_idle;
+        image_index = 0;
+    }
+}
+
+if (room == video) {
+    if (falando || audio_is_playing(So_vineBoom)) {
+        image_alpha = 1;
+        gordo_visivel = true;
+    } else {
+        image_alpha = max(0, image_alpha - 0.02);
+
+        if (image_alpha <= 0) {
+            gordo_visivel = false;
+        }
+    }
+} else {
+    image_alpha = 1;
+    gordo_visivel = true;
 }
 
 if (falando != falando_anterior) {
@@ -133,6 +156,7 @@ if (global.contador && contador <= 0) {
     if (som_timer != -1) {
         if (room == video) {
             image_alpha = 1;
+            gordo_visivel = true;
             explosao = true;
             explosao_frame = 0;
 
