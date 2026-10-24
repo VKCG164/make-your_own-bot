@@ -1,7 +1,7 @@
 
 menu_atual = 0;
 
-meno = ["Gravar", "Streaming", "Tela", "Sair"];
+meno = ["Gravar", "Streaming", "Tela","Skins", "Sair"];
 meno2 = ["Cor de fundo", "Musica", "Voltar"];
 
 indice = 0;

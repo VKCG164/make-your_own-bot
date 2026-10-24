@@ -1,152 +1,169 @@
-// Pausa com Esc
-if (keyboard_check_pressed(vk_escape))
-{
+
+if (keyboard_check_pressed(vk_escape)) {
     pausado = !pausado;
 }
 
-// Pausa com dois cliques no scroll
-if (mouse_check_button_pressed(mb_middle))
-{
-    if (current_time - ultimo_clique_scroll <= 350)
-    {
+if (mouse_check_button_pressed(mb_middle)) {
+    if (current_time - ultimo_clique_scroll <= 350) {
         pausado = !pausado;
         ultimo_clique_scroll = -1000;
-    }
-    else
-    {
+    } else {
         ultimo_clique_scroll = current_time;
     }
 }
-if (pausado)
-{
-    var mx = device_mouse_x_to_gui(0);
-    var my = device_mouse_y_to_gui(0);
 
-    var xx = display_get_gui_width() * 0.5;
-    var yy = display_get_gui_height() * 0.5;
+animacao_menu = lerp(
+    animacao_menu,
+    pausado ? 1 : 0,
+    velocidade_menu
+);
 
-    for (var i = 0; i < array_length(opcoes); i++)
-    {
-        var texto_y = yy + i * 32;
-        
-        if (mx >= xx - 120 && mx <= xx + 120 &&
-            my >= texto_y && my <= texto_y + 28)
-        {
-            selecionado = i;
+if (abs(animacao_menu - (pausado ? 1 : 0)) < 0.005) {
+    animacao_menu = pausado ? 1 : 0;
+}
 
-            if (mouse_check_button_pressed(mb_left))
-            {
-                switch (selecionado)
-                {
-                    case 0:
-                        pausado = false;
-                    break;
+opcoes[5] = global.interface_oculta ? "MOSTRAR GUI" : "ESCONDER GUI";
 
-                    case 1:
-                        global.fundo++;
-                    break;
+if (!pausado) {
+    exit;
+}
 
-                    case 2:
-                        global.musica = !global.musica;
-                    break;
+var qtd = array_length(opcoes);
+var gh = display_get_gui_height();
+var gw = display_get_gui_width();
+var espacamento = min(gh * 0.12, 95);
 
-                    case 3:
-                        with (Obj_Gordo)
-                        {
-                            contador = 0;
-                        }
-                    break;
 
-                    case 4:
-                        with (Obj_Gordo)
-                        {
-                            contador_streaming = 0;
-                        }
+var mx = device_mouse_x_to_gui(0);
+var my = device_mouse_y_to_gui(0);
 
-                        global.contador = !global.contador;
-                    break;
+var _up = keyboard_check_pressed(vk_up);
+var _down = keyboard_check_pressed(vk_down);
+var _input = _down - _up;
 
-                    case 5:
-                        global.skin++;
+for (var i = 0; i < qtd; i++) {
+    var diferenca = i - pos;
 
-                        if (global.skin > 8)
-                        {
-                            global.skin = 0;
-                        }
-                    break;
+    var _x = gw - 280 + abs(diferenca) * 60;
+    var _y = gh * 0.5 + diferenca * espacamento;
 
-                    case 6:
-                        room_goto(menu);
-                    break;
+    if (i == indice) {
+        _x += 50;
+    }
+
+    var _w = (i == indice) ? larg : larg_ini;
+    var _h = (i == indice) ? alt : alt_ini;
+
+    if (mx >= _x - _w * 0.5 &&
+        mx <= _x + _w * 0.5 &&
+        my >= _y - _h * 0.5 &&
+        my <= _y + _h * 0.5) {
+        if (indice != i) {
+            indice = i;
+            audio_play_sound(So_slide, 2, false);
+        }
+    }
+}
+
+if (_input != 0) {
+    indice += _input;
+
+    if (indice >= qtd) {
+        indice = 0;
+    }
+
+    if (indice < 0) {
+        indice = qtd - 1;
+    }
+
+    larg = larg_ini;
+    alt = alt_ini;
+    texto_escala = texto_escala_ini;
+
+    audio_play_sound(So_slide, 2, false);
+}
+
+indice = clamp(indice, 0, qtd - 1);
+
+pos = lerp(pos, indice, 0.1);
+larg = lerp(larg, larg_fim, 0.1);
+
+if (larg > larg_fim - 2) {
+    alt = lerp(alt, alt_fim, 0.1);
+}
+
+texto_escala = lerp(texto_escala, texto_escala_fim, 0.1);
+texto_pulso += 0.15;
+
+if (texto_clique > 0) {
+    texto_clique = max(0, texto_clique - 0.12);
+}
+
+var confirmar = mouse_check_button_pressed(mb_left)
+    || keyboard_check_pressed(vk_enter);
+
+if (confirmar) {
+    texto_clique = 1;
+    texto_clique_indice = indice;
+
+    switch (indice) {
+        case 0:
+            pausado = false;
+        break;
+
+        case 1:
+            global.fundo++;
+        break;
+
+        case 2:
+            global.musica = !global.musica;
+        break;
+
+        case 3:
+            if (instance_exists(Obj_Gordo)) {
+                with (Obj_Gordo) {
+                    contador = room_speed * tempo_troca;
+                    contador_streaming = 0;
+                    tocou_streaming = false;
+                    segundo_sorteado = irandom_range(1, max(1, streaming));
                 }
             }
-        }
-    }
+        break;
 
-    if (keyboard_check_pressed(vk_up))
-    {
-        selecionado--;
+        case 4:
+            global.contador = !global.contador;
 
-        if (selecionado < 0)
-        {
-            selecionado = array_length(opcoes) - 1;
-        }
-    }
-
-    if (keyboard_check_pressed(vk_down))
-    {
-        selecionado++;
-
-        if (selecionado >= array_length(opcoes))
-        {
-            selecionado = 0;
-        }
-    }
-
-    if (keyboard_check_pressed(vk_enter))
-    {
-        switch (selecionado)
-        {
-            case 0:
-                pausado = false;
-            break;
-
-            case 1:
-                global.fundo++;
-            break;
-
-            case 2:
-                global.musica = !global.musica;
-            break;
-
-            case 3:
-                with (Obj_Gordo)
-                {
-                    contador = 0;
-                }
-            break;
-
-            case 4:
-                with (Obj_Gordo)
-                {
+            if (instance_exists(Obj_Gordo)) {
+                with (Obj_Gordo) {
                     contador_streaming = 0;
+                    tocou_streaming = false;
                 }
+            }
+        break;
 
-                global.contador = !global.contador;
-            break;
+        case 5:
+            global.interface_oculta = !global.interface_oculta;
+        break;
 
-            case 5:
-                global.skin++;
-
-                if (global.skin > 8)
-                {
-                    global.skin = 0;
+        case 6:
+            if (instance_exists(Obj_Gordo)) {
+                with (Obj_Gordo) {
+                    ini_open("botConfig.ini");
+                    ini_write_real("Gordo", "x", x);
+                    ini_write_real("Gordo", "y", y);
+                    ini_write_real("Gordo", "escala_x", image_xscale);
+                    ini_write_real("Gordo", "escala_y", image_yscale);
+                    ini_close();
                 }
-            break;
+            }
+        break;
 
-            case 6:
-                room_goto(menu);
-            break;
-        }
+        case 7:
+            pausado = false;
+            global.interface_oculta = false;
+            room_goto(menu);
+        break;
     }
+
+    audio_play_sound(So_slide, 2, false);
 }

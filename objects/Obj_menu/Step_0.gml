@@ -88,16 +88,13 @@ if (larg > larg_fim - 2)
 
 texto_escala = lerp(texto_escala, texto_escala_fim, 0.1);
 
-// Animação de seleção
 texto_pulso += 0.15;
 
-// Animação de clique
 if (texto_clique > 0)
 {
     texto_clique = max(0, texto_clique - 0.12);
 }
 
-// Confirmar
 var confirmar = mouse_check_button_pressed(mb_left)
     || keyboard_check_pressed(vk_enter);
 
@@ -128,6 +125,10 @@ if (confirmar)
             break;
 
             case 3:
+                room_goto(Skins);
+            break;
+
+            case 4:
                 game_end();
             break;
         }
